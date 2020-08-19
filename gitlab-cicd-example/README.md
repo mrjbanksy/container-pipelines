@@ -87,8 +87,6 @@ Example:
   oc policy add-role-to-group system:image-puller system:serviceaccounts:$PROJECT_SHORTNAME-prod -n $PROJECT_SHORTNAME-build
   ```
 
-If desired, additional projects can be added, for integration or qa testing, with jobs modeled from the existing `deploy_*` jobs, and can be split up between clusters, for example if there is a separate cluster for production.
-
 * Add the development [service account](#service-account) and any additional users who need view/edit/admin permissions to the development projects following the [steps to add roles using RBAC](https://docs.openshift.com/container-platform/4.5/authentication/using-rbac.html#adding-roles_using-rbac)
 
 Example:
