@@ -14,11 +14,11 @@ First, for all pipeline runs, it will compile the code, and then build a contain
 
 * If running on the master branch, it will deploy to the `latest` environment for the application.
 
-![Master branch flow diagram](/diagrams/master-branch-flow.png)
+![Master branch flow diagram](diagrams/master-branch-flow.png)
 
 * If running on a non-master, feature branch, it will create an ephemeral feature project for the feature branch if it does not already exist, and then deploy to the ephemeral feature project. This gives developers an environment to test just the feature they are working on without contention for a limited number of dev environments. The pipeline will wait until the feature branch is deleted, and then delete the ephemeral feature project to reclaim resources on the cluster.
 
-![Feature branch flow diagram](/diagrams/feature-branch-flow.png)
+![Feature branch flow diagram](diagrams/feature-branch-flow.png)
 
 * If running on a tag matching the `v*` pattern (for example v1.0.1), it will deploy to the `production` environment. There are 4 stages for the production deployment, each requiring a manual action to start: `deploy_to_prod`, `prod_set_to_50`, `prod_set_to_100`, and `prod_revert`. The logic of when to run the jobs depends on the situation.
     * If this is the first production deployment for this application, all traffic will be routed to this deployment during the `deploy_to_prod` job. This is the only job that needs to be run for this deployment.
@@ -26,7 +26,7 @@ First, for all pipeline runs, it will compile the code, and then build a contain
     * If, during a second or later production deployment for this application, at a point before the `prod_set_to_100` job has been completed, a problem has been noticed, and it is decided to revert to the old version, the `prod_revert` job can be run. This will delete the new deployment and route all traffic to the old deployment.
     * `prod_revert` will not work for the first deployment, or after `prod_set_to_100` is completed. If a bug is noticed during one of these scenarios, a new production deployment will be needed to resolve the issue.
 
-![Prod tag flow diagram](/diagrams/prod-tag-flow.png)
+![Prod tag flow diagram](diagrams/prod-tag-flow.png)
 
 ## Creating the GitLab runner
 
