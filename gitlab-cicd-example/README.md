@@ -74,7 +74,7 @@ Example:
   ```
 * If needed, update the Dockerfile to work with your application.
 * If needed, update the commands in the build, test, and compile jobs to meet the needs of your appliation.
-* If needed, use a different builder image. The `ocp-tools` image in use by default is based on the UBI8-minimal image, with `oc`, `helm`, `java 11`, and `maven` installed.
+* If needed, use a different builder image. The [`ocp-tools`](https://gitlab.com/mrjbanksy/ocp-tools) image in use by default is based on the UBI8-minimal image, with `oc`, `helm`, `java 11`, and `maven` installed.
 * Create the following projects in the OpenShift cluster using the shortname set up in `.gitlab-ci.yml` from the first step, and grant `image-puller` rights in the build project to the deployment projects:
     * `$PROJECT_SHORTNAME-build`
     * `$PROJECT_SHORTNAME-latest`
