@@ -2,7 +2,10 @@
 
 ## Why was this pipeline created?
 
-This pipeline was created to integrate GitLab CI/CD and OpenShift to deploy code from GitLab as applications within OpenShift. The two main goals of this pipeline were for each feature branch to have its own environment within OpenShift for testing, and for production deployments to use a blue/green deployment strategy.
+This pipeline was created to integrate GitLab CI/CD and OpenShift. The three main goals of this pipeline were:
+* Automate the deployment of code from GitLab as containerized applications within OpenShift
+* Create ephemeral environments within OpenShift for each feature branch
+* Use a blue/green deployment architecture in production.
 
 ## What's in this folder?
 
