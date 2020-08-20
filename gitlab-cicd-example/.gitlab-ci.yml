@@ -9,10 +9,10 @@ variables:
   PROJECT_SHORTNAME: example
   # The ephemeral feature projects will be created by the service account, so by default, developers won't have access to it.
   # Add users here in a space separated string for them to be given admin permissions on the feature projects.
-  FEATURE_BRANCH_ADMINS: "jbanks@redhat.com"
-  DEV_AUTH_INFO: "--token=$OCP_SA_TOKEN --server=https://api.$OCP_CLUSTER:6443 --insecure-skip-tls-verify=true"
+  FEATURE_BRANCH_ADMINS: "dev@example.com"
+  DEV_AUTH_INFO: "--token=$OCP_SA_TOKEN --server=https://api.$OCP_CLUSTER:6443"
   # If there is a production cluster in addition to the development cluster, modify the following line to point at prod
-  PROD_AUTH_INFO: "--token=$OCP_SA_TOKEN --server=https://api.$OCP_CLUSTER:6443 --insecure-skip-tls-verify=true"
+  PROD_AUTH_INFO: "--token=$OCP_SA_TOKEN --server=https://api.$OCP_CLUSTER:6443"
 
 # Default image that has oc, helm, and java related packages.
 # See https://gitlab.com/mrjbanksy/ocp-tools
@@ -47,10 +47,10 @@ test:
     - mvn clean test
   artifacts:
     paths:
-      - target/reports/test/TEST-*.xml
+      - target/surefire-reports/test/TEST-*.xml
     reports:
       junit:
-        - target/reports/test/TEST-*.xml
+        - target/surefire-reports/test/TEST-*.xml
 
 build:
   tags:
